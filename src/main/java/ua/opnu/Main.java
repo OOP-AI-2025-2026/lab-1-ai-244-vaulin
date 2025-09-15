@@ -92,11 +92,11 @@ public class Main {
      * arrayCount9([1, 9, 9, 3, 9]) → 3
      */
     public int arrayCount9(int[] nums) {
-        int count = 0;
+        int appear_count = 0;
         for (int el : nums) {
-            if (el == 9) count++;
+            if (el == 9) appear_count++;
         }
-        return count;
+        return appear_count;
     }
 
     /**
@@ -108,11 +108,10 @@ public class Main {
      * arrayFront9([1, 2, 3, 4, 5]) → false
      */
     public boolean arrayFront9(int[] nums) {
-        int index = 0;
-
+        int first_four_elements = 0;
         for (int num : nums) {
-            index++;
-            if (num == 9 && index < 4) {
+            first_four_elements++;
+            if (num == 9 && first_four_elements < 4) {
                 return true;
             }
         }
@@ -170,9 +169,9 @@ public class Main {
         StringBuilder reverse_two_chars = new StringBuilder(last_two_chars);
         reverse_two_chars.reverse();
 
-        String deleted_two_chars = str.substring(0, str.length()- 2);
+        String string_with_deleted_last_two_chars = str.substring(0, str.length()- 2);
 
-        return deleted_two_chars + reverse_two_chars;
+        return string_with_deleted_last_two_chars + reverse_two_chars;
     }
 
     /**
@@ -186,6 +185,4 @@ public class Main {
         int index_of_middle_string = Math.round( (float) str.length() / 2 ) - 1;
         return str.substring(index_of_middle_string, index_of_middle_string+2);
     }
-
-
 }
