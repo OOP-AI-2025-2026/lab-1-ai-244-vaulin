@@ -42,7 +42,8 @@ public class Main {
      * hasTeen(20, 10, 13) → true
      */
     public boolean hasTeen(int a, int b, int c) {
-        return (a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19);
+        return (a >= 13 && a <= 19) || (b >= 13 && b <= 19)
+                || (c >= 13 && c <= 19);
     }
 
     // ======== Boolean expressions ========
@@ -177,7 +178,8 @@ public class Main {
         StringBuilder reverse_two_chars = new StringBuilder(lastTwoChars);
         reverse_two_chars.reverse();
 
-        String string_with_deleted_last_two_chars = str.substring(0, str.length() - 2);
+        String string_with_deleted_last_two_chars = str.substring(0,
+                str.length() - 2);
 
         return string_with_deleted_last_two_chars + reverse_two_chars;
     }
