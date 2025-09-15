@@ -15,7 +15,10 @@ public class Main {
      * icyHot(2, 120) → false
      */
     public boolean icyHot(int temp1, int temp2) {
-        return (temp1 < 0 && temp2 > 100) || (temp1 > 100 && temp2 < 0);
+        int lowestTemperature = 0;
+        int highestTemperature = 100;
+        return (temp1 < lowestTemperature && temp2 > highestTemperature)
+                || (temp1 > highestTemperature && temp2 < lowestTemperature);
     }
 
     /**
@@ -30,7 +33,8 @@ public class Main {
     }
 
     /**
-     * We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 3 int values, return true if 1
+     * We'll say that a number is "teen" if it is in the range 13..19 inclusive.
+     * Given 3 int values, return true if 1
      * or more of them are teen.
      * Example:
      * hasTeen(13, 20, 10) → true
@@ -44,8 +48,10 @@ public class Main {
     // ======== Boolean expressions ========
 
     /**
-     * The parameter weekday is true if it is a weekday, and the parameter vacation is true if we are on vacation.
-     * We sleep in if it is not a weekday or we're on vacation. Return true if we sleep in.
+     * The parameter weekday is true if it is a weekday, and the parameter vacation
+     * is true if we are on vacation.
+     * We sleep in if it is not a weekday or we're on vacation.
+     * Return true if we sleep in.
      * Example:
      * sleepIn(false, false) → true
      * sleepIn(true, false) → false
@@ -71,7 +77,7 @@ public class Main {
 
     /**
      * Given 2 int values, return true if one is negative and one is positive. Except if the parameter "negative"
-     *  iis true, then return true only if both are negative.
+     * iis true, then return true only if both are negative.
      * Example:
      * posNeg(1, -1, false) → true
      * posNeg(-1, 1, false) → true
@@ -92,11 +98,11 @@ public class Main {
      * arrayCount9([1, 9, 9, 3, 9]) → 3
      */
     public int arrayCount9(int[] nums) {
-        int appear_count = 0;
+        int appearCount = 0;
         for (int el : nums) {
-            if (el == 9) appear_count++;
+            if (el == 9) appearCount++;
         }
-        return appear_count;
+        return appearCount;
     }
 
     /**
@@ -108,10 +114,11 @@ public class Main {
      * arrayFront9([1, 2, 3, 4, 5]) → false
      */
     public boolean arrayFront9(int[] nums) {
-        int first_four_elements = 0;
+        int countToFirstElementIndex = 0;
+        int firstFourElemenets = 4;
         for (int num : nums) {
-            first_four_elements++;
-            if (num == 9 && first_four_elements < 4) {
+            countToFirstElementIndex++;
+            if (num == 9 && countToFirstElementIndex < firstFourElemenets) {
                 return true;
             }
         }
@@ -126,16 +133,16 @@ public class Main {
      * array123([1, 1, 2, 1, 2, 3]) → true
      */
     public boolean array123(int[] nums) {
-        boolean is_appeared_one = false;
-        boolean is_appeared_two = false;
-        boolean is_appeared_three = false;
+        boolean isAppearedOne = false;
+        boolean isAppearedTwo = false;
+        boolean isAppearedThree = false;
 
         for (int el : nums) {
-            if (el == 1) is_appeared_one = true;
-            else if (el == 2) is_appeared_two = true;
-            else if (el == 3) is_appeared_three = true;
+            if (el == 1) isAppearedOne = true;
+            else if (el == 2) isAppearedTwo = true;
+            else if (el == 3) isAppearedThree = true;
         }
-        return is_appeared_one && is_appeared_two && is_appeared_three;
+        return isAppearedOne && isAppearedTwo && isAppearedThree;
     }
 
     // ======== Strings ========
@@ -149,8 +156,9 @@ public class Main {
      */
     public String helloName(String name) {
         String base = "Hello !";
+        int indexOfInsertPlace = 6;
         StringBuilder res = new StringBuilder(base);
-        res.insert(6, name);
+        res.insert(indexOfInsertPlace, name);
         return res.toString();
     }
 
@@ -165,11 +173,11 @@ public class Main {
     public String lastTwo(String str) {
         if (str.length() < 2) return str;
 
-        String last_two_chars = str.substring(str.length() - 2);
-        StringBuilder reverse_two_chars = new StringBuilder(last_two_chars);
+        String lastTwoChars = str.substring(str.length() - 2);
+        StringBuilder reverse_two_chars = new StringBuilder(lastTwoChars);
         reverse_two_chars.reverse();
 
-        String string_with_deleted_last_two_chars = str.substring(0, str.length()- 2);
+        String string_with_deleted_last_two_chars = str.substring(0, str.length() - 2);
 
         return string_with_deleted_last_two_chars + reverse_two_chars;
     }
@@ -182,7 +190,7 @@ public class Main {
      * middleTwo("Practice") → "ct"
      */
     public String middleTwo(String str) {
-        int index_of_middle_string = Math.round( (float) str.length() / 2 ) - 1;
-        return str.substring(index_of_middle_string, index_of_middle_string+2);
+        int indexOfMiddleString = Math.round((float) str.length() / 2) - 1;
+        return str.substring(indexOfMiddleString, indexOfMiddleString + 2);
     }
 }
