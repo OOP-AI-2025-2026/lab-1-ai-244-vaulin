@@ -15,8 +15,10 @@ public class Main {
      * icyHot(2, 120) → false
      */
     public boolean icyHot(int temp1, int temp2) {
-        // TODO: write method body
-        return false;
+        int lowestTemperature = 0;
+        int highestTemperature = 100;
+        return (temp1 < lowestTemperature && temp2 > highestTemperature)
+                || (temp1 > highestTemperature && temp2 < lowestTemperature);
     }
 
     /**
@@ -27,12 +29,12 @@ public class Main {
      * in1020(8, 99) → false
      */
     public boolean in1020(int a, int b) {
-        // TODO: write method body
-        return false;
+        return (a >= 10 && a <= 20) || (b >= 10 && b <= 20);
     }
 
     /**
-     * We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 3 int values, return true if 1
+     * We'll say that a number is "teen" if it is in the range 13..19 inclusive.
+     * Given 3 int values, return true if 1
      * or more of them are teen.
      * Example:
      * hasTeen(13, 20, 10) → true
@@ -40,23 +42,25 @@ public class Main {
      * hasTeen(20, 10, 13) → true
      */
     public boolean hasTeen(int a, int b, int c) {
-        // TODO: write method body
-        return false;
+        return (a >= 13 && a <= 19) || (b >= 13 && b <= 19)
+                || (c >= 13 && c <= 19);
     }
 
     // ======== Boolean expressions ========
 
     /**
-     * The parameter weekday is true if it is a weekday, and the parameter vacation is true if we are on vacation.
-     * We sleep in if it is not a weekday or we're on vacation. Return true if we sleep in.
+     * The parameter weekday is true if it is a weekday, and the parameter vacation
+     * is true if we are on vacation.
+     * We sleep in if it is not a weekday or we're on vacation.
+     * Return true if we sleep in.
      * Example:
      * sleepIn(false, false) → true
      * sleepIn(true, false) → false
      * sleepIn(false, true) → true
      */
     public boolean sleepIn(boolean weekday, boolean vacation) {
-        // TODO: write method body
-        return false;
+        if (vacation) return true;
+        return !weekday;
     }
 
     /**
@@ -68,21 +72,21 @@ public class Main {
      * monkeyTrouble(true, false) → false
      */
     public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-        // TODO: write method body
-        return false;
+        if (!aSmile && !bSmile) return true;
+        return aSmile && bSmile;
     }
 
     /**
      * Given 2 int values, return true if one is negative and one is positive. Except if the parameter "negative"
-     * is true, then return true only if both are negative.
+     * iis true, then return true only if both are negative.
      * Example:
      * posNeg(1, -1, false) → true
      * posNeg(-1, 1, false) → true
      * posNeg(-4, -5, true) → true
      */
     public boolean posNeg(int a, int b, boolean negative) {
-        // TODO: write method body
-        return false;
+        if (negative) return (a < 0 && b < 0);
+        return (a < 0 && b > 0) || (a > 0 && b < 0);
     }
 
     // ======== Loops and Arrays ========
@@ -95,8 +99,11 @@ public class Main {
      * arrayCount9([1, 9, 9, 3, 9]) → 3
      */
     public int arrayCount9(int[] nums) {
-        // TODO: write method body
-        return 0;
+        int appearCount = 0;
+        for (int el : nums) {
+            if (el == 9) appearCount++;
+        }
+        return appearCount;
     }
 
     /**
@@ -108,7 +115,14 @@ public class Main {
      * arrayFront9([1, 2, 3, 4, 5]) → false
      */
     public boolean arrayFront9(int[] nums) {
-        // TODO: write method body
+        int countToFirstElementIndex = 0;
+        int firstFourElemenets = 4;
+        for (int num : nums) {
+            countToFirstElementIndex++;
+            if (num == 9 && countToFirstElementIndex < firstFourElemenets) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -120,8 +134,16 @@ public class Main {
      * array123([1, 1, 2, 1, 2, 3]) → true
      */
     public boolean array123(int[] nums) {
-        // TODO: write method body
-        return false;
+        boolean isAppearedOne = false;
+        boolean isAppearedTwo = false;
+        boolean isAppearedThree = false;
+
+        for (int el : nums) {
+            if (el == 1) isAppearedOne = true;
+            else if (el == 2) isAppearedTwo = true;
+            else if (el == 3) isAppearedThree = true;
+        }
+        return isAppearedOne && isAppearedTwo && isAppearedThree;
     }
 
     // ======== Strings ========
@@ -134,8 +156,11 @@ public class Main {
      * helloName("X") → "Hello X!"
      */
     public String helloName(String name) {
-        // TODO: write method body
-        return null;
+        String base = "Hello !";
+        int indexOfInsertPlace = 6;
+        StringBuilder res = new StringBuilder(base);
+        res.insert(indexOfInsertPlace, name);
+        return res.toString();
     }
 
     /**
@@ -147,8 +172,16 @@ public class Main {
      * lastTwo("ab") → "ba"
      */
     public String lastTwo(String str) {
-        // TODO: write method body
-        return null;
+        if (str.length() < 2) return str;
+
+        String lastTwoChars = str.substring(str.length() - 2);
+        StringBuilder reverse_two_chars = new StringBuilder(lastTwoChars);
+        reverse_two_chars.reverse();
+
+        String string_with_deleted_last_two_chars = str.substring(0,
+                str.length() - 2);
+
+        return string_with_deleted_last_two_chars + reverse_two_chars;
     }
 
     /**
@@ -159,9 +192,7 @@ public class Main {
      * middleTwo("Practice") → "ct"
      */
     public String middleTwo(String str) {
-        // TODO: write method body
-        return null;
+        int indexOfMiddleString = Math.round((float) str.length() / 2) - 1;
+        return str.substring(indexOfMiddleString, indexOfMiddleString + 2);
     }
-
-
 }
